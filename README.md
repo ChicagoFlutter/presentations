@@ -1,5 +1,8 @@
 # Chicago Flutter Presentations
 
+## 2019
+* [April 24th, State Management: Our Journey](./2019_04_24_flutter_meetup/README.md)
+
 ## 2018
 
 * [November 7th, Study Jam #3](./2018_11_07_study_jam_3/2018_11_07_study_jam_3.pdf)
