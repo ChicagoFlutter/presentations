@@ -113,13 +113,24 @@ Get Started: **https://shorebird.dev**
 
 ---
 
+# ✨ Highlights
+
+- ✅ Android 🤖
+- ☑️ iOS 🍎 (alpha)
+- ✅ Flavors 🍧
+- ✅ Add-To-App 🧩
+- ✅ CI Integration 🚦 (GitHub, Codemagic)
+- ✅ Multiple Flutter Versions 🐦
+- 🚧 Asset Support 🖼️ (coming soon)
+
+---
+
 # iOS Code Push
 
 - A technical challenge
 - Patched code is not executable
 - App Store T&Cs
 - Technical barriers in the OS
-
 
 Shorebird solution: an interpreter to run patched code
 
@@ -130,7 +141,6 @@ Shorebird solution: an interpreter to run patched code
 - Modify the Dart VM's ARM64 simulator
 - The iOS alpha works
 - The interpreter is up to 120x slower
-
 
 We need a mixed CPU/interpreter mode
 
@@ -162,7 +172,7 @@ Dart threads have a state bit: currently using CPU or simulator
 
 ---
 
-# Challenge #2: *How* to Switch
+# Challenge #2: _How_ to Switch
 
 - A level of indirection at call boundaries
 - Choose how to run the called code
@@ -213,21 +223,9 @@ Neither of these will work for mixed mode
 - Normal Dart VM finds a handler in the stack
 - Unwinds down to the handler and runs the handler
 - Simulator finds a handler in the stack
-- Unwinds *both* stacks and simulates the handler
+- Unwinds _both_ stacks and simulates the handler
 
 Mixed mode needs to handle both possibilities
-
----
-
-# ✨ Highlights
-
-- ✅ Android 🤖
-- ☑️ iOS 🍎 (alpha)
-- ✅ Flavors 🍧
-- ✅ Add-To-App 🧩
-- ✅ CI Integration 🚦 (GitHub, Codemagic)
-- ✅ Multiple Flutter Versions 🐦
-- 🚧 Asset Support 🖼️ (coming soon)
 
 ---
 
