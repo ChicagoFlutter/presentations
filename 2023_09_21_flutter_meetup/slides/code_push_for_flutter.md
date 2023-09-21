@@ -113,7 +113,109 @@ Get Started: **https://shorebird.dev**
 
 ---
 
-# TODO KEVIN SLIDES
+# iOS Code Push
+
+- A technical challenge
+- Patched code is not executable
+- App Store T&Cs
+- Technical barriers in the OS
+
+
+Shorebird solution: an interpreter to run patched code
+
+---
+
+# Good News / Bad News
+
+- Modify the Dart VM's ARM64 simulator
+- The iOS alpha works
+- The interpreter is up to 120x slower
+
+
+We need a mixed CPU/interpreter mode
+
+---
+
+# Challenge #1: It Doesn't Exist
+
+- Normal Dart VM runs all code on the CPU
+- Dart VM w/simulator runs
+  - C++ on the host CPU (Dart runtime, Flutter, extensions)
+  - Dart in the target CPU simulator
+
+---
+
+# Challenge #1: It Doesn't Exist
+
+- Shorebird's modified Dart VM will run in mixed mode
+  - host and target are the same
+  - C++ and most Dart on the host CPU
+  - some Dart on the simulated CPU
+
+---
+
+# FTSE
+
+![inline](../assets/wikipedia_ftse.png)
+
+Dart threads have a state bit: currently using CPU or simulator
+
+---
+
+# Challenge #2: *How* to Switch
+
+- A level of indirection at call boundaries
+- Choose how to run the called code
+
+We made the code objects themselves "self-transitioning"
+
+---
+
+### Patched Code: CPU to Simulator
+
+![inline](../assets/cpu_to_simulator.png)
+
+---
+
+### Unpatched Code: Stays on the CPU
+
+![inline](../assets/cpu_to_cpu.png)
+
+---
+
+### Unpatched Code: Simulator to CPU
+
+![inline](../assets/simulator_to_cpu.png)
+
+---
+
+### Patched Code: Stays in the Simulator
+
+![inline](../assets/simulator_to_simulator.png)
+
+---
+
+# Challenge #3: C++ Code
+
+- Normal Dart VM calls C++ through a stub
+- All code runs on the target arch
+- Simulator calls an invalid instruction through a stub
+- Runs C++ code on the host arch
+
+Neither of these will work for mixed mode
+
+**Solution**: a level of indirection to the stub
+
+---
+
+# Challenge #4: Exception Handling
+
+- Normal Dart VM finds a handler in the stack
+- Unwinds down to the handler and runs the handler
+- Simulator finds a handler in the stack
+- Unwinds *both* stacks and simulates the handler
+
+Mixed mode needs to handle both possibilities
 
 ---
 
