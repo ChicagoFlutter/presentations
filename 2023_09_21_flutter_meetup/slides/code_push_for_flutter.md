@@ -12,7 +12,7 @@ slidenumbers: true
 
 # 👋 Hello
 
-![inline](../assets/about_me.png)
+![inline](../assets/about_felix.png)![inline](../assets/about_kevin.png)
 
 ---
 
@@ -110,6 +110,10 @@ Get Started: **https://shorebird.dev**
 # Android & iOS
 
 # 🥳🤖🍎
+
+---
+
+# TODO KEVIN SLIDES
 
 ---
 
